@@ -10,8 +10,8 @@ import { useRecipe } from '../../../../context/recipe';
 
 export default function Bars({ status }) {
 
-  const [ data, setData ] = useState([]); 
-    const [ options, setOptions ] = useState([]); 
+  const [ data, setData ] = useState({}); 
+    const [ options, setOptions ] = useState({}); 
 
     const { recipe } = useRecipe();
 

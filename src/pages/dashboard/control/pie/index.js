@@ -9,8 +9,8 @@ import { useRecipe } from '../../../../context/recipe';
 
 export default function Pie() {
 
-    const [ data, setData ] = useState([]); 
-    const [ options, setOptions ] = useState([]); 
+    const [ data, setData ] = useState({}); 
+    const [ options, setOptions ] = useState({}); 
 
     const { recipe } = useRecipe();
 

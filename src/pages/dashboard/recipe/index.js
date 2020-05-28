@@ -13,7 +13,6 @@ import DatePicker from '../../../components/form/inputs/datepicker';
 import ButtonDefault from '../../../components/buttons';
 
 import { RecipeContainer, RecipeForm } from './style';
-import { useEffect } from 'react';
 
 export default function AddRecipe() {
 

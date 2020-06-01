@@ -14,7 +14,7 @@ import ButtonDefault from '../../../components/buttons';
 
 import { RecipeContainer, RecipeForm } from './style';
 
-export default function AddRecipe() {
+export default function Recipe() {
 
     const { user } = useAuth();
 

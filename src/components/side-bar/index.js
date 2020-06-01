@@ -21,7 +21,7 @@ export default function SideBar() {
         <ContainerSideBar>
             <ul>
                 <li>
-                    <button href="#" onClick={() => handlePage('page01') }>
+                    <button onClick={() => handlePage('page01') }>
                         <FiHome 
                             size={ 32 } 
                         />

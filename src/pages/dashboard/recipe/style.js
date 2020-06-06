@@ -6,6 +6,11 @@ export const RecipeContainer = styled.div`
     grid-template-rows: 10fr 80fr;
     gap: 10px;
     margin: 10px;
+
+    @media( max-width: 700px ) {
+        grid-template-rows: 10fr 90fr;
+        flex: 1;
+    }
 `;
 
 export const RecipeForm = styled.div`
@@ -32,5 +37,11 @@ export const RecipeForm = styled.div`
         flex-direction: column;
         width: 30%;
         margin: 0 auto;
+    }
+
+    @media( max-width: 700px ) {
+        form{
+            width: 100%;
+        }
     }
 `;

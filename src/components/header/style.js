@@ -60,4 +60,21 @@ export const ContainerUser = styled.div`
         }
     }
 
+    @media( max-width: 700px ) {
+
+        strong {
+            
+        }
+
+        div {
+            width: 52px;
+            height: 52px;
+
+            img {
+                width: 50px;
+                height: 50px;
+                border-radius: 50%
+            }
+        }
+    }
 `;

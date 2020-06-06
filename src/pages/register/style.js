@@ -1,19 +1,6 @@
 import styled from 'styled-components';
 
-export const ContainerRegister = styled.div`
-
-  display: flex;
-  justify-content: space-between; 
-  align-items: center;
-  flex-direction: row;
-  max-width: 1200px;
-  width: 100%;
-  margin: 0 auto;
-  height: 100vh;/* cobre a altura toda do corpo*/
-  background-color: #48887B;
-`;
-
-export const ContainerLeft = styled.div`
+export const ContainerLeftWeb = styled.div`
 
     display: flex;
     flex-direction: column;
@@ -24,10 +11,26 @@ export const ContainerLeft = styled.div`
         font-size: 24px;
         font-weight: bold;
         color: #FFF;
-    }
+    };
 
 `;
 
+export const ContainerLeftMobile = styled.div`
+
+    display: none;
+    flex-direction: column;
+    border: none;
+    flex: 2;
+    padding: 16px;
+
+    p {
+        font-size: 12px;
+        font-weight: bold;
+        color: #FFF;
+        padding: 16px;
+    };
+
+`;
 
 export const ContainerRight = styled.div`
 
@@ -58,8 +61,9 @@ export const ContainerRight = styled.div`
     form {
         display: flex;
         flex-direction: column;
-        width: 40%;
-        margin: 0 auto;        
+        width: 50%;
+        margin: 0 auto;
+        padding-left: 16px;     
     }
 `;
 
@@ -67,15 +71,15 @@ export const ContainerOption = styled.div`
 
     display: flex;
     flex-direction: row;
-    width: 40%;
+    width: 50%;
     margin: 0 auto;
     align-items: center;
     justify-content: space-between;
 
     p {
         color: #29B573;
-        font-size: 16px;
-        font-weight: bold
+        font-weight: bold;
+        padding-left: 16px;
     }
 
     a {
@@ -85,3 +89,61 @@ export const ContainerOption = styled.div`
         font-weight: bold
     }
 `;
+
+export const ContainerRegister = styled.div`
+
+  display: flex;
+  justify-content: space-between; 
+  align-items: center;
+  flex-direction: row;
+  max-width: 1200px;
+  width: 100%;
+  margin: 0 auto;
+  height: 100vh;/* cobre a altura toda do corpo*/
+  background-color: #48887B;
+  padding: 16px;
+
+
+/*Media Query */
+@media ( max-width: 760px )  {
+
+    flex-direction: column;
+    align-items: center;
+    justify-content: end; 
+
+    ${ ContainerLeftWeb } {
+        display: none
+    };
+
+    ${ ContainerLeftMobile } {
+        display: flex
+    };
+
+    ${ ContainerRight } {
+
+        width: 100%;
+        flex: 4;
+
+        h2 {
+            margin-bottom: 8px;
+        }
+
+        form {
+            width: 100%;
+            padding-left: 0;
+        }
+    };
+
+        ${ ContainerOption } {
+            width: 100%;
+
+            p {
+                padding-left: 0px;
+            }
+        }
+    }
+
+`;
+
+
+

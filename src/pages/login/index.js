@@ -10,8 +10,9 @@ import { useAuth } from '../../context/auth';
 import ButtonDefault from '../../components/buttons';
 import Input from '../../components/form/inputs/text';
 
-import { ContainerLogin, ContainerRight, ContainerLeft, ContainerOption } from './style';
+import { ContainerLogin, ContainerRight, ContainerLeftWeb, ContainerLeftMobile, ContainerOption } from './style';
 import logo from '../../img/logo.svg';
+import logoSingle from '../../img/logo-single.svg';
 
 export default function Login() {
 
@@ -50,12 +51,18 @@ export default function Login() {
     return (
         
         <ContainerLogin>
-            <ContainerLeft>
+
+            <ContainerLeftWeb>
                 <img src={ logo } alt="logo"/>
                 <p>Sistema que irá auxiliar no controle dos seus gastos.</p>
-            </ContainerLeft>
+            </ContainerLeftWeb>
 
-            <ContainerRight>
+            <ContainerLeftMobile>
+                <img src={ logoSingle } alt="logo"/>
+                <p>Sistema que irá auxiliar no controle dos seus gastos.</p>
+            </ContainerLeftMobile>
+
+            <ContainerRight >
                 <Form ref={formRef} onSubmit={ loginUser } >
 
                     <h2>Login</h2>

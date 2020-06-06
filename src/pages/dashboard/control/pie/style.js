@@ -10,4 +10,10 @@ export const ContainerPie = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
+
+    @media( max-width: 700px ) {
+        grid-column: auto;
+        grid-row: 3/4;
+
+    }
 `;

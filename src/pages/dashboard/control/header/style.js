@@ -39,5 +39,9 @@ export const ContainerHeader = styled.header`
         background-color: rgba(200,200,200,0.1);
         color: #666;
     }
+
+    @media( max-width: 700px ) {
+        grid-column: auto;
+    }
     
 `;

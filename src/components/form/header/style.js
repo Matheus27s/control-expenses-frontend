@@ -14,5 +14,12 @@ export const ContainerHeader = styled.header`
     p {
         font-size: 24px;
     }
+
+    @media ( max-width: 700px )  {
+
+        p {
+            margin: 0 auto;
+        }
+    }
     
 `;

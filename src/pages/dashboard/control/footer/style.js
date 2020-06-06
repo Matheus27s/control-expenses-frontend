@@ -16,4 +16,10 @@ export const ContainerHeader = styled.header`
         color: #FFF; 
         font-size: 24px;   
     }
+
+    @media( max-width: 700px ) {
+        grid-column: auto;
+        grid-row: 5/6;
+
+    }
 `;

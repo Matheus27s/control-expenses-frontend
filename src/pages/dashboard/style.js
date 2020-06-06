@@ -6,4 +6,13 @@ export const ContainerDashboard = styled.div`
     grid-template-rows: 5fr 50fr;
     grid-template-columns: 5fr 95fr;
     height: 100vh;
+
+    @media ( max-width: 700px )  {
+
+        display: flex;
+        flex-direction: column;
+
+    }
+
+
 `;

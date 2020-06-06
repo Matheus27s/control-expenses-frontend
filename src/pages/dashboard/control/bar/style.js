@@ -10,4 +10,9 @@ export const ContainerBar = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
+
+    @media( max-width: 700px ) {
+        grid-column: auto;
+        grid-row: 4/5;
+    }
 `;

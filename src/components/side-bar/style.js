@@ -42,4 +42,19 @@ export const ContainerSideBar = styled.div`
             }
         }
     }
+
+    @media ( max-width: 700px )  {
+
+        ul {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-around;
+            align-items: center;
+
+            li {
+                margin-top: 0;
+            }
+        }
+    }
+
 `;

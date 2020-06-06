@@ -12,8 +12,9 @@ import ButtonDefault from '../../components/buttons';
 import Input from '../../components/form/inputs/text';
 import Upload from '../../components/form/inputs/uploads';
 
-import { ContainerRegister, ContainerOption, ContainerRight, ContainerLeft } from './style';
+import { ContainerRegister, ContainerLeftWeb, ContainerLeftMobile, ContainerRight, ContainerOption } from './style';
 import logo from '../../img/logo.svg';
+import logoSingle from '../../img/logo-single.svg';
 
 export default function Register({ history }) {
 
@@ -37,10 +38,15 @@ export default function Register({ history }) {
         
         <ContainerRegister>
 
-            <ContainerLeft>
+            <ContainerLeftWeb>
                 <img src={ logo } alt="logo"/>
                 <p>Sistema que irá auxiliar no controle dos seus gastos.</p>
-            </ContainerLeft>
+            </ContainerLeftWeb>
+
+            <ContainerLeftMobile>
+                <img src={ logoSingle } alt="logo"/>
+                <p>Sistema que irá auxiliar no controle dos seus gastos.</p>
+            </ContainerLeftMobile>
 
             <ContainerRight>
             <Form ref={formRef} onSubmit={registerUser}>

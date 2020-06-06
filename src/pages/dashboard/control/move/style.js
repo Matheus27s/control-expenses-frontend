@@ -9,4 +9,9 @@ export const MoveContainer = styled.div`
     box-shadow: 0px 3px 3px rgba(0,0,0,0.3);
     width: 100%;
     padding: 16px;
+
+    @media( max-width: 700px ) {
+        grid-column: auto;
+        grid-row: 2/3;
+    }
 `;

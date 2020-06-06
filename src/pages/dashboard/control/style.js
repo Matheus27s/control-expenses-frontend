@@ -7,4 +7,9 @@ export const ContainerControl = styled.div`
     grid-template-columns: 70fr 30fr;
     gap: 10px;
     margin: 10px;
+
+    @media(max-width: 700px) {
+        grid-template-rows: 5fr 40fr 20fr 20fr 5fr;
+        grid-template-columns: auto;
+    }
 `;

@@ -6,6 +6,12 @@ export const CategoryContainer = styled.div`
     grid-template-rows: 10fr 80fr;
     gap: 10px;
     margin: 10px;
+
+    @media( max-width: 700px ) {
+        grid-template-rows: 10fr 90fr;
+        flex: 1;
+    }
+
 `;
 
 export const CategoryForm = styled.div`
@@ -33,5 +39,11 @@ export const CategoryForm = styled.div`
         margin: 0 auto;
         display: flex;
 
+    }
+
+    @media( max-width: 700px ) {
+        form{
+            width: 100%;
+        }
     }
 `;

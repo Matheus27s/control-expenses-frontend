@@ -63,11 +63,11 @@ export default function List() {
                                             { formatMoney( item.value ) }
 
                                     </strong>
-                                    <FiX 
-                                        color="#666" 
+                                    <a 
                                         style={{ cursor: "pointer" }} 
+                                        color="#666" 
                                         onClick={ () => removeMove(item.id) }
-                                    />
+                                    >x</a>
                                 </ContainerRight>
                             
                             </li>
@@ -96,11 +96,12 @@ export default function List() {
                                         style={{ color: 'blue' }}>
                                             { formatMoney( item.value ) }
                                             
-                                    </strong>                                    <FiX 
+                                    </strong>                                    
+                                    <a 
                                         style={{ cursor: "pointer" }} 
                                         color="#666" 
                                         onClick={ () => removeMove(item.id) }
-                                    />
+                                    >x</a>
                                 </ContainerRight>
 
                             </li>

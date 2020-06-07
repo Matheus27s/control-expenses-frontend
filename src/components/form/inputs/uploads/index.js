@@ -1,7 +1,6 @@
-import React, { useState,useEffect, useRef } from "react";
+import React, { useRef } from "react";
 import { useField } from '@unform/core';
 import ImageUploader from "react-images-upload";
-import { Base64 } from 'js-base64';
 
 import './style.css'
 
@@ -29,7 +28,7 @@ const fileContainerStyle = {
 
 export default function Upload({ name, ...rest }) {
 
-  const { fieldName, registerField, defaultValue, error } = useField(name);
+  const { fieldName, registerField, defaultValue } = useField(name);
   const inputRef = useRef(null);
 
   const onDrop = () => {
@@ -61,7 +60,7 @@ export default function Upload({ name, ...rest }) {
                 fileSizeError={'Tamanho muito grande'}
                 fileTypeError={'Essa extenção não é suportada'}
                 singleImage={true}
-                
+                { ...rest }
             />
         );
 }

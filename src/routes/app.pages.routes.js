@@ -1,25 +1,28 @@
-import React from 'react';
+import React, { lazy, Suspense } from 'react';
 import { BrowserRouter, Route } from 'react-router-dom';
+import Loading from '../components/loading';
 
 import { usePage } from '../context/page';
 
-import Control from '../pages/dashboard/control';
-import Move from '../pages/dashboard/move';
-import Category from '../pages/dashboard/category';
-import Recipe from '../pages/dashboard/recipe';
-import User from '../pages/dashboard/user';
+let Control =   lazy(() => import('../pages/dashboard/control'));
+let Move =      lazy(() => import('../pages/dashboard/move'));
+let Category =  lazy(() => import('../pages/dashboard/category'));
+let Recipe =    lazy(() => import('../pages/dashboard/recipe'));
+let User =      lazy(() => import('../pages/dashboard/user'));
 
 const AppPagesRoutes = () => {
 
     const { page } = usePage();
     
     switch ( page ) {
-        case 'page01': return <BrowserRouter><Route component={ Control } /></BrowserRouter> 
-        case 'page02': return <BrowserRouter><Route component={ Recipe } /></BrowserRouter> 
-        case 'page03': return <BrowserRouter><Route component={ Move } /></BrowserRouter>
-        case 'page04': return <BrowserRouter><Route component={ Category } /></BrowserRouter> 
-        case 'page05': return <BrowserRouter><Route component={ User } /></BrowserRouter> 
-        default      : return <BrowserRouter><Route component={ Control } /></BrowserRouter> 
+
+        case 'page01': return <Suspense fallback={ <Loading /> } ><BrowserRouter><Route component={ Control } /></BrowserRouter></Suspense>
+        case 'page02': return <Suspense fallback={ <Loading /> } ><BrowserRouter><Route component={ Recipe } /></BrowserRouter></Suspense>
+        case 'page03': return <Suspense fallback={ <Loading /> } ><BrowserRouter><Route component={ Move } /></BrowserRouter></Suspense>
+        case 'page04': return <Suspense fallback={ <Loading /> } ><BrowserRouter><Route component={ Category } /></BrowserRouter></Suspense>
+        case 'page05': return <Suspense fallback={ <Loading /> } ><BrowserRouter><Route component={ User } /></BrowserRouter></Suspense>
+        default      : return <Suspense fallback={ <Loading /> } ><BrowserRouter><Route component={ Control } /></BrowserRouter></Suspense>
+
     }
 };
 

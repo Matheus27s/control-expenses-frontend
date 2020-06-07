@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react';
+import React, { useRef } from 'react';
 import { Form } from '@unform/web';
 
 //API
@@ -19,7 +19,6 @@ export default function User() {
 
     const { user, signIn } = useAuth();
     const formRef = useRef(null);
-    const [pictures, setPictures] = useState([]);
 
     const initialData = {
         name: user.name,
@@ -28,6 +27,7 @@ export default function User() {
     }
 
     async function editUser(data) {
+        
         const response = await api.post('users', {
             id: user.id,
             name: data.name,

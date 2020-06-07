@@ -3,6 +3,8 @@ import { Link } from 'react-router-dom';
 import { Form } from '@unform/web';
 import * as Yup from 'yup';
 
+//import MyComp from '../../components/newLoader/myComp';
+
 //Contexts:
 import { useAuth } from '../../context/auth';
 
@@ -34,6 +36,9 @@ export default function Login() {
             });
 
             formRef.current.setErrors({});
+
+            console.log(data)
+
             signIn(data.login);
 
         } catch (err) {
@@ -79,5 +84,6 @@ export default function Login() {
                 </ContainerOption>
             </ContainerRight>
         </ContainerLogin>
+
     );
 }

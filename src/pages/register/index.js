@@ -1,16 +1,12 @@
-import React, { useState, useRef } from 'react';
+import React, { useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { Form } from '@unform/web';
 
 import api from '../../services/api';
 
-//Contexts:
-import { useAuth } from '../../context/auth';
-
 //Components:
 import ButtonDefault from '../../components/buttons';
 import Input from '../../components/form/inputs/text';
-import Upload from '../../components/form/inputs/uploads';
 
 import { ContainerRegister, ContainerLeftWeb, ContainerLeftMobile, ContainerRight, ContainerOption } from './style';
 import logo from '../../img/logo.svg';
@@ -18,13 +14,11 @@ import logoSingle from '../../img/logo-single.svg';
 
 export default function Register({ history }) {
 
-    const { user } = useAuth();
     const formRef = useRef(null);
-    const [pictures, setPictures] = useState([]);
 
     async function registerUser(data) {
 
-        const response = await api.post('users', {
+        await api.post('users', {
             name: data.name,
             login: data.login,
             password: data.password,

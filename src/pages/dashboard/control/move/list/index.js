@@ -8,7 +8,7 @@ import { formatMoney } from '../../../../../util/formatMoneyValue';
 import { useRecipe } from '../../../../../context/recipe';
 
 import { MoveList, ContainerLeft, ContainerCenter, ContainerRight, Overflow } from './style';
-import { FiChevronsDown, FiChevronsUp, FiX } from 'react-icons/fi';
+import { FiChevronsDown, FiChevronsUp } from 'react-icons/fi';
 
 export default function List() {
 

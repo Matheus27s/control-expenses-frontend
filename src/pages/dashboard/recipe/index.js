@@ -26,8 +26,7 @@ export default function Recipe() {
         try {
 
             const schema = Yup.object().shape({
-                dateMonth: Yup.date().
-                typeError("Campo nulo."),
+                dateMonth: Yup.date().typeError("Campo nulo."),
             });
 
             await schema.validate(data, {

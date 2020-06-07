@@ -4,6 +4,7 @@ export const ContainerLeftWeb = styled.div`
 
     display: flex;
     flex-direction: column;
+    align-items: center;
     border-right: 2px solid #29B573;
     flex: 2;
 
@@ -12,6 +13,10 @@ export const ContainerLeftWeb = styled.div`
         font-weight: bold;
         color: #FFF;
     };
+
+    img {
+        width: 300px;
+    }
 
 `;
 

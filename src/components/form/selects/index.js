@@ -1,6 +1,6 @@
 import React, { useRef, useEffect } from 'react';
 import { useField } from '@unform/core';
-import ReactSelect, { Props as SelectProps } from 'react-select';
+import ReactSelect from 'react-select';
 
 const customStyles = {
     container: (provided, state) => ({
@@ -32,7 +32,7 @@ const customStyles = {
 export default function Select({ name, ...rest }) {
 
     const selectRef = useRef(null);
-    const { fieldName, defaultValue, registerField, error } = useField(name);
+    const { fieldName, defaultValue, registerField } = useField(name);
 
     useEffect(() => {
 

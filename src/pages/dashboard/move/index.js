@@ -23,12 +23,9 @@ export default function Move() {
 
     const { recipe } = useRecipe();
 
-    const [ category, setCategory ] = useState({});
-    const [ typeMove, setTypeMove ] = useState(0);
     const [ categories, setCategories ] = useState([]);
-    const [ error, setError ] = useState('');
 
-    const [ tipos, setTipos ]  = useState([
+    const [ tipos ]  = useState([
         { value: 1, label: 'RECEBIMENTO' },
         { value: 2, label: 'GASTO' },
     ])
@@ -54,20 +51,10 @@ export default function Move() {
         try {
 
             const schema = Yup.object().shape({
-
-                name: Yup.string().
-                    required("Campo nulo.").
-                    max(13, "Texto muito grande."),
-
-                value: Yup.string().
-                    required("Campo nulo."),
-                
-                paymentDate: Yup.date().
-                    typeError("Campo nulo."),
-                    
-                typeMove: Yup.string().
-                    required("Topic is required!")
-
+                name: Yup.string().required("Campo nulo.").max(13, "Texto muito grande."),
+                value: Yup.string().required("Campo nulo."),
+                paymentDate: Yup.date().typeError("Campo nulo."),
+                typeMove: Yup.string().required("Topic is required!")
             });
 
             await schema.validate(data, {

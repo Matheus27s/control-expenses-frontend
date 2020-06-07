@@ -1,13 +1,17 @@
-import React from 'react';
+import React, { lazy, Suspense } from 'react';
 import { BrowserRouter, Route } from 'react-router-dom';
 
-import Login from '../pages/login';
-import Register from '../pages/register';
+import Loading from '../components/loading';
+
+let Login =    lazy(() => import('../pages/login'));
+let Register = lazy(() => import('../pages/register'));
 
 const AuthRoutes = () => (
      <BrowserRouter>
-        <Route exact path="/" component={ Login }/>
-        <Route path="/register" component={ Register }/>
+        <Suspense fallback={ <Loading /> }>
+            <Route exact path="/" component={ Login }/>
+            <Route path="/register" component={ Register }/>
+        </Suspense>
     </BrowserRouter>
 );
 

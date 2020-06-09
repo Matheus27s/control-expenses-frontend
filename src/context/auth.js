@@ -35,10 +35,8 @@ export const AuthProvider = ({ children }) => {
 
         const { data } = await api.post('sessions/', {
             login,
-        })
-
-        console.log(data)
-
+        });
+        
         setUser(data);
         localStorage.setItem('@RNAuth:user', JSON.stringify(data));
     }

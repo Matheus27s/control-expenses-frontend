@@ -1,6 +1,7 @@
 import React, { useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { Form } from '@unform/web';
+import * as Yup from 'yup';
 
 import api from '../../services/api';
 
@@ -18,14 +19,42 @@ export default function Register({ history }) {
 
     async function registerUser(data) {
 
-        await api.post('users', {
-            name: data.name,
-            login: data.login,
-            password: data.password,
-            profile: data.profile 
-        });
+        try {
 
-        history.push('/');
+            const schema = Yup.object().shape({
+                name: Yup.string().required('Campo nulo.'),
+                login: Yup.string().required('Campo nulo.'),
+                password: Yup.string().required('Campo nulo.'),
+            });
+
+            await schema.validate(data, {
+                abortEarly: false
+            });
+
+            formRef.current.setErrors({});
+
+            await api.post('users', {
+                name: data.name,
+                login: data.login,
+                password: data.password,
+            });
+    
+            console.log('Registrado com sucesso!!')
+            history.push('/');
+
+        } catch( err ) {
+
+            console.log("Erro no Registro!")
+
+            if( err instanceof Yup.ValidationError ) {
+                const errorMessages = {};
+                err.inner.forEach(error => {
+                    errorMessages[error.path] = error.message;
+                })
+
+                formRef.current.setErrors(errorMessages);
+            }
+        }
     }
 
     return (

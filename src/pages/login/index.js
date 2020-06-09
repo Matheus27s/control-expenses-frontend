@@ -27,8 +27,8 @@ export default function Login() {
         try {
 
             const schema = Yup.object().shape({
-                login: Yup.string().required('O Login é obrigatório'),
-                password: Yup.string().required(),
+                login: Yup.string().required('Campo nulo.'),
+                password: Yup.string().required('Campo nulo.'),
             });
 
             await schema.validate(data, {
@@ -36,12 +36,15 @@ export default function Login() {
             });
 
             formRef.current.setErrors({});
-
-            console.log(data)
-
             signIn(data.login);
 
+            console.log(data)
+            console.log('Login com sucesso!!')
+
         } catch (err) {
+
+            console.log("Erro no login!")
+
             if( err instanceof Yup.ValidationError ) {
                 const errorMessages = {};
                 err.inner.forEach(error => {

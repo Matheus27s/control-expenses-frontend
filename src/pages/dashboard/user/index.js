@@ -1,5 +1,6 @@
 import React, { useRef } from 'react';
 import { Form } from '@unform/web';
+import * as Yup from 'yup';
 
 //API
 import api from '../../../services/api';
@@ -23,21 +24,53 @@ export default function User() {
     const initialData = {
         name: user.name,
         login: user.login,
-        password: user.password
+        password: user.password,
     }
 
     async function editUser(data) {
-        
-        const response = await api.post('users', {
-            id: user.id,
-            name: data.name,
-            login: data.login,
-            password: data.password,
-            profile: data.profile 
-        })
 
-        signIn(response.data.login);
+        try {
 
+            const schema = Yup.object().shape({
+                dateMonth: Yup.date().typeError("Campo nulo."),
+                id:        Yup.number().typeError("Campo nulo."),
+                recipes:   Yup.array().typeError("Campo nulo."),
+                name:      Yup.string().typeError("Campo nulo."),
+                login:     Yup.string().typeError("Campo nulo."),
+                password:  Yup.string().typeError("Campo nulo."),
+            });
+
+            await schema.validate(data, {
+                abortEarly: false
+            });
+            
+            formRef.current.setErrors({});
+
+            const response = await api.put('users', {
+                id:       user.id,
+                recipes:  user.recipes,
+                name:     data.name,
+                login:    data.login,
+                password: data.password,
+                profile:  data.profile,
+            })
+    
+            signIn(response.data.login);
+
+        } catch( err ) {
+
+            console.log("Erro ao tentar atualizar o usuário.")
+
+            if( err instanceof Yup.ValidationError ) {
+                const errorMessages = {};
+                err.inner.forEach(error => {
+                    errorMessages[error.path] = error.message;
+                })
+
+                formRef.current.setErrors(errorMessages);
+            }
+
+        }
     }
 
     return(
@@ -47,7 +80,7 @@ export default function User() {
             
             <MoveForm> 
 
-            <Form ref={formRef} initialData={ initialData } onSubmit={ editUser }> 
+            <Form ref={ formRef } initialData={ initialData } onSubmit={ editUser }> 
 
                 <Upload 
                     name="profile"

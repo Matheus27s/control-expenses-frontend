@@ -7,6 +7,8 @@ const AuthContext = createContext({
     user: {},
     signIn: () => {},
     signOut: () => {},
+    register: () => {},
+    messageErro: '',
 
 });
 
@@ -14,6 +16,7 @@ export const AuthProvider = ({ children }) => {
 
     const [ user, setUser ] = useState(null);
     const [ loading, setLoading ] = useState(true);
+    const [ statusMenssage, setStatusMenssage ] = useState('');
 
     useEffect(() => {
 
@@ -29,16 +32,33 @@ export const AuthProvider = ({ children }) => {
         setLoading(false);
         loadStorageData();
 
-    },[])
+    },[]);
+
+    async function register( user ) {
+
+        const { data } = await api.post('users/',
+            user,
+        );
+
+        setStatusMenssage('Usuário salvo com sucesso!');
+    }
 
     async function signIn( login ) {
 
         const { data } = await api.post('sessions/', {
             login,
         });
-        
+
+        if( data === '' ) {
+            setStatusMenssage('Senha ou Login inválido!');
+            return Error;
+        };
+
+        setStatusMenssage(`Bem vindo ${ data.name }!`);
+                
         setUser(data);
         localStorage.setItem('@RNAuth:user', JSON.stringify(data));
+
     }
 
     function signOut() {
@@ -47,7 +67,7 @@ export const AuthProvider = ({ children }) => {
     }
 
     return(
-        <AuthContext.Provider value={{ signed: !!user, loading ,user , signIn, signOut }}>
+        <AuthContext.Provider value={{ signed: !!user, loading ,user , signIn, signOut,register, statusMenssage, setStatusMenssage }}>
             { children }
         </AuthContext.Provider>
     );

@@ -7,6 +7,7 @@ import api from '../../../services/api';
 
 //Context
 import { useAuth } from '../../../context/auth';
+import { usePage } from '../../../context/page';
 
 //Components:
 import Header from '../../../components/form/header'
@@ -21,13 +22,15 @@ export default function User() {
     const { user, signIn } = useAuth();
     const formRef = useRef(null);
 
+    const { handlePage } = usePage();
+
     const initialData = {
         name: user.name,
         login: user.login,
         password: user.password,
     }
 
-    async function editUser(data) {
+    async function editUser(data, { reset }) {
 
         try {
 
@@ -56,10 +59,8 @@ export default function User() {
             })
     
             signIn(response.data.login);
-
+            handlePage('page05');
         } catch( err ) {
-
-            console.log("Erro ao tentar atualizar o usuário.")
 
             if( err instanceof Yup.ValidationError ) {
                 const errorMessages = {};

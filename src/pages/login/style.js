@@ -95,6 +95,13 @@ export const ContainerOption = styled.div`
     }
 `;
 
+export const StatusMessage = styled.p`
+    text-align: center;
+    color: green;
+    ${ props => props.status === 'Senha ou Login inválido!' && 'color: red' }
+    ${ props => props.status === 'Usuário salvo com sucesso!' && 'color: blue' }
+`;
+
 export const ContainerLogin = styled.div`
 
   display: flex;

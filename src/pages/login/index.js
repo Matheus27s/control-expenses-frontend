@@ -12,13 +12,13 @@ import { useAuth } from '../../context/auth';
 import ButtonDefault from '../../components/buttons';
 import Input from '../../components/form/inputs/text';
 
-import { ContainerLogin, ContainerRight, ContainerLeftWeb, ContainerLeftMobile, ContainerOption } from './style';
+import { ContainerLogin, ContainerRight, ContainerLeftWeb, ContainerLeftMobile, ContainerOption, StatusMessage } from './style';
 import logo from '../../img/logo.svg';
 import logoSingle from '../../img/logo-single.svg';
 
 export default function Login() {
 
-    const { signIn } = useAuth();
+    const { signIn, statusMenssage, setStatusMenssage } = useAuth();
 
     const formRef = useRef(null);
 
@@ -38,12 +38,9 @@ export default function Login() {
             formRef.current.setErrors({});
             signIn(data.login);
 
-            console.log(data)
-            console.log('Login com sucesso!!')
-
         } catch (err) {
 
-            console.log("Erro no login!")
+            setStatusMenssage('')
 
             if( err instanceof Yup.ValidationError ) {
                 const errorMessages = {};
@@ -74,6 +71,7 @@ export default function Login() {
                 <Form ref={formRef} onSubmit={ loginUser } >
 
                     <h2>Login</h2>
+                    <StatusMessage status={ statusMenssage }>{ statusMenssage }</StatusMessage>
 
                     <Input name="login" type="text" placeholder="Login"/>
                     <Input name="password" type="password" placeholder="Password"/>
@@ -83,7 +81,7 @@ export default function Login() {
 
                 <ContainerOption>
                     <p>Registrar-se</p>
-                    <Link to="/register" >{ '>' }</Link>
+                    <Link to="/register" onClick={ () => setStatusMenssage('') }  >{ '>' }</Link>
                 </ContainerOption>
             </ContainerRight>
         </ContainerLogin>

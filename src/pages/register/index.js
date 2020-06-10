@@ -5,6 +5,8 @@ import * as Yup from 'yup';
 
 import api from '../../services/api';
 
+import { useAuth } from '../../context/auth';
+
 //Components:
 import ButtonDefault from '../../components/buttons';
 import Input from '../../components/form/inputs/text';
@@ -16,6 +18,8 @@ import logoSingle from '../../img/logo-single.svg';
 export default function Register({ history }) {
 
     const formRef = useRef(null);
+
+    const { register, statusMessage, setStatusMenssage } = useAuth();
 
     async function registerUser(data) {
 
@@ -33,18 +37,12 @@ export default function Register({ history }) {
 
             formRef.current.setErrors({});
 
-            await api.post('users', {
-                name: data.name,
-                login: data.login,
-                password: data.password,
-            });
-    
-            console.log('Registrado com sucesso!!')
+            register( data );
             history.push('/');
 
         } catch( err ) {
 
-            console.log("Erro no Registro!")
+            setStatusMenssage('')
 
             if( err instanceof Yup.ValidationError ) {
                 const errorMessages = {};
@@ -97,7 +95,7 @@ export default function Register({ history }) {
 
             <ContainerOption>
                 <p>Login</p>
-                <Link to="/" >{ '<' }</Link>
+                <Link to="/" onClick={ () =>  setStatusMenssage('') }>{ '<' }</Link>
             </ContainerOption>
 
             </ContainerRight>
